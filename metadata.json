@@ -1,0 +1,6 @@
+{
+  "name": "UNIQUE Business Partner (UBP)",
+  "description": "Integrated business operations enablement partner delivering 24/7, 360-degree execution across HR, Finance & Accounts, Administration, Operations, Legal Services, and Corporate Events.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,591 @@
+/* ==========================================================================
+   UNIQUE Business Partner (UBP) — Multi-Page Corporate Design System
+   Palette: Deep Navy (#071528 / #0B1F3A), Royal Blue (#1D4ED8), Ice Blue (#EFF6FF)
+   ========================================================================== */
+
+:root {
+  --ubp-navy: #0b1f3a;
+  --ubp-navy-deep: #071528;
+  --ubp-royal: #1d4ed8;
+  --ubp-royal-hover: #2563eb;
+  --ubp-ice: #eff6ff;
+  --ubp-ice-border: #dbeafe;
+  --ubp-amber: #fbbf24;
+  --ubp-sky: #93c5fd;
+  --ubp-crimson: #dc2626;
+  --ubp-emerald: #15803d;
+  --ubp-canvas: #f8fafc;
+  --ubp-border: #e2e8f0;
+  --ubp-text: #0f172a;
+  --ubp-muted: #475569;
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ubp-text);
+  background-color: var(--ubp-canvas);
+  line-height: 1.6;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- Sticky Glassmorphism Navbar ---------- */
+.ubp-navbar {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.ubp-navbar.is-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(11, 31, 58, 0.08);
+}
+
+.ubp-navbar .navbar-brand img {
+  height: 66px;
+  width: auto;
+  display: block;
+}
+
+.ubp-navbar .nav-link {
+  position: relative;
+  color: var(--ubp-muted);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 0.55rem 0.25rem;
+  margin: 0 0.6rem;
+  white-space: nowrap;
+  transition: color 0.18s ease;
+}
+
+.ubp-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15rem;
+  height: 2.5px;
+  background-color: var(--ubp-royal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ubp-navbar .nav-link:hover,
+.ubp-navbar .nav-link:focus-visible {
+  color: var(--ubp-navy);
+}
+
+.ubp-navbar .nav-link.active {
+  color: var(--ubp-royal);
+  font-weight: 700;
+}
+
+.ubp-navbar .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.ubp-dropdown-menu {
+  border: 1px solid var(--ubp-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 14px 34px rgba(11, 31, 58, 0.12);
+  padding: 0.5rem;
+  min-width: 18.5rem;
+}
+
+.ubp-dropdown-menu .dropdown-item {
+  border-radius: 0.5rem;
+  padding: 0.52rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ubp-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ubp-dropdown-menu .dropdown-item:hover,
+.ubp-dropdown-menu .dropdown-item.active {
+  background-color: var(--ubp-ice);
+  color: var(--ubp-royal);
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn-ubp-primary {
+  background-color: var(--ubp-navy);
+  border-color: var(--ubp-navy);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.68rem 1.4rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-ubp-primary:hover,
+.btn-ubp-primary:focus-visible {
+  background-color: var(--ubp-royal);
+  border-color: var(--ubp-royal);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(29, 78, 216, 0.22);
+}
+
+.btn-ubp-outline {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: var(--ubp-navy);
+  font-weight: 600;
+  padding: 0.68rem 1.4rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-ubp-outline:hover,
+.btn-ubp-outline:focus-visible {
+  background-color: var(--ubp-ice);
+  border-color: var(--ubp-royal);
+  color: var(--ubp-royal);
+}
+
+/* High-Contrast Hero Buttons (Dark #071528 Background) */
+.btn-ubp-hero-primary {
+  background-color: var(--ubp-royal);
+  border: 1.5px solid var(--ubp-royal);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.72rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-ubp-hero-primary:hover,
+.btn-ubp-hero-primary:focus-visible {
+  background-color: var(--ubp-royal-hover);
+  border-color: #60a5fa;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn-ubp-hero-outline {
+  background-color: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.72rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-ubp-hero-outline:hover,
+.btn-ubp-hero-outline:focus-visible {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* ---------- Hero (Matching Footer #071528), Page Headers & Surface Gradients ---------- */
+.ubp-hero-section {
+  background-color: var(--ubp-navy-deep);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ubp-hero-eyebrow {
+  color: var(--ubp-amber);
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.ubp-hero-subhead {
+  color: var(--ubp-sky);
+}
+
+.ubp-hero-desc {
+  color: #cbd5e1;
+}
+
+.ubp-hero-trust {
+  color: #ffffff;
+}
+
+.ubp-hero-stats-strip {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ubp-hero-stat-num {
+  color: var(--ubp-amber);
+}
+
+.ubp-hero-stat-label {
+  color: #ffffff;
+}
+
+.ubp-hero-stat-desc {
+  color: #cbd5e1;
+}
+
+.ubp-hero-section .ubp-hero-media {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ubp-page-header {
+  background: linear-gradient(145deg, #ffffff 0%, #f1f6fd 60%, var(--ubp-ice) 100%);
+  border-bottom: 1px solid var(--ubp-border);
+}
+
+.ubp-ice-surface {
+  background: linear-gradient(180deg, #f8fafc 0%, var(--ubp-ice) 100%);
+}
+
+.ubp-navy-section {
+  background: linear-gradient(135deg, var(--ubp-navy-deep) 0%, var(--ubp-navy) 55%, #122d54 100%);
+  color: #ffffff;
+}
+
+.ubp-hero-media {
+  position: relative;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  border: 1px solid var(--ubp-border);
+  min-height: 360px;
+  height: 100%;
+  background-color: var(--ubp-navy);
+}
+
+.ubp-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ubp-media-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 21, 40, 0.88) 0%, rgba(11, 31, 58, 0.22) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+
+/* ---------- Cards & Interactive States ---------- */
+.ubp-card {
+  background-color: #ffffff;
+  border: 1px solid var(--ubp-border);
+  border-radius: 0.875rem;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
+}
+
+.ubp-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: 0 14px 30px rgba(11, 31, 58, 0.08);
+}
+
+.ubp-service-img-wrap {
+  position: relative;
+  height: 196px;
+  overflow: hidden;
+  background-color: var(--ubp-navy);
+}
+
+.ubp-service-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ubp-card-hover:hover .ubp-service-img-wrap img {
+  transform: scale(1.04);
+}
+
+.ubp-service-icon-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--ubp-ice);
+  color: var(--ubp-royal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ubp-portrait-frame {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--ubp-border);
+  background-color: #f1f5f9;
+}
+
+.ubp-portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.ubp-banner-frame {
+  position: relative;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  border: 1px solid var(--ubp-border);
+  background-color: var(--ubp-navy);
+  aspect-ratio: 16 / 9;
+}
+
+.ubp-banner-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ubp-skyline-banner {
+  position: relative;
+  height: 260px;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  border: 1px solid var(--ubp-border);
+  background-color: var(--ubp-navy);
+}
+
+.ubp-skyline-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ubp-skyline-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7, 21, 40, 0.88) 0%, rgba(11, 31, 58, 0.45) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+/* ---------- Services Page Nav-Tabs & Filter Controls ---------- */
+.ubp-service-tabs {
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--ubp-border);
+  padding-bottom: 0.85rem;
+}
+
+.ubp-service-tabs .nav-link {
+  border: 1px solid var(--ubp-border);
+  background-color: #ffffff;
+  color: var(--ubp-muted);
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.16s ease;
+}
+
+.ubp-service-tabs .nav-link:hover {
+  background-color: var(--ubp-ice);
+  border-color: #bfdbfe;
+  color: var(--ubp-navy);
+}
+
+.ubp-service-tabs .nav-link.active {
+  background-color: var(--ubp-navy);
+  border-color: var(--ubp-navy);
+  color: #ffffff;
+}
+
+.ubp-filter-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  background-color: #ffffff;
+  border: 1px solid var(--ubp-border);
+  padding: 0.35rem;
+  border-radius: 0.65rem;
+}
+
+.ubp-filter-tab {
+  border: none;
+  background: transparent;
+  color: var(--ubp-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.48rem 0.9rem;
+  border-radius: 0.45rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ubp-filter-tab:hover {
+  background-color: #f1f5f9;
+  color: var(--ubp-navy);
+}
+
+.ubp-filter-tab.active {
+  background-color: var(--ubp-navy);
+  color: #ffffff;
+}
+
+/* ---------- Contact Form & Footer ---------- */
+.ubp-form-control {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.62rem 0.85rem;
+  font-size: 0.92rem;
+  color: var(--ubp-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ubp-form-control:focus {
+  border-color: var(--ubp-royal);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
+}
+
+.ubp-footer {
+  background-color: var(--ubp-navy-deep);
+  color: #cbd5e1;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ubp-footer-logo-wrap {
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 0.65rem;
+  padding: 0.65rem 1.15rem;
+}
+
+.ubp-footer-logo-wrap img {
+  height: 72px;
+  width: auto;
+  display: block;
+}
+
+.ubp-yjk-logo {
+  height: 28px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: contain;
+  display: block;
+}
+
+.ubp-powered-label {
+  color: #94a3b8;
+}
+
+.ubp-powered-brand {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.ubp-footer a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
+}
+
+.ubp-footer a:hover {
+  color: #ffffff;
+}
+
+/* ---------- Reduced Motion Compliance ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ubp-card,
+  .ubp-service-img-wrap img,
+  .btn-ubp-primary,
+  .btn-ubp-hero-primary,
+  .ubp-navbar .nav-link::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 991.98px) {
+  .ubp-navbar .navbar-brand img {
+    height: 52px;
+  }
+  .ubp-navbar .nav-link {
+    margin: 0.15rem 0;
+    padding: 0.6rem 0.25rem;
+  }
+  .ubp-navbar .nav-link::after {
+    display: none;
+  }
+  .ubp-hero-media {
+    min-height: 280px;
+  }
+}
+
+/* Fix unwanted black focus outline on service tab panes */
+.tab-pane:focus,
+.tab-pane:focus-visible,
+.tab-pane:target,
+.tab-content:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent horizontal scroll & hide visible scrollbar on mobile view */
+@media (max-width: 991.98px) {
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
